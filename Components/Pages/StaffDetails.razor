@@ -1,0 +1,31 @@
+@page "/staffdetails/{id}"
+@inherits StaffDetailsBase;
+
+@if (staff == null)
+{
+    <div class="spinner"></div>
+}
+else
+{
+    <div class="row justify-content-center m-3">
+        <div class="col-sm-5">
+            <div class="card">
+                <div class="card-header">
+                    <h1>@staff.FirstName @staff.LastName</h1>
+                </div>
+                <div class="card-body text-center">
+                    @* <img class="card-img-top" src="@staff.Photo" /> *@
+                    <h4>Staff ID: @staff.EmployeeId</h4>
+                    <h4>Email: @staff.Email</h4>
+                    <h4>Starting Date: @staff.StartingDate.ToString()</h4>
+                    <h4>Department: @staff.DepartmentId</h4>
+                </div>
+                <div class="card-footer text-center">
+                    <a href="/stafflist" class="btn btn-primary">Back</a>
+                    <a href="@($"editstaff/{staff.EmployeeId}")" class="btn btn-primary m-1">Edit</a>
+                    <a href="#" class="btn btn-danger">Delete</a>
+                </div>
+            </div>
+        </div>
+    </div>
+}
