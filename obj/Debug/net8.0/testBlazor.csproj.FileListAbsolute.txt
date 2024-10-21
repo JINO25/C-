@@ -123,3 +123,4 @@ E:\STUDY\testBlazor\obj\Debug\net8.0\refint\testBlazor.dll
 E:\STUDY\testBlazor\obj\Debug\net8.0\testBlazor.pdb
 E:\STUDY\testBlazor\obj\Debug\net8.0\testBlazor.genruntimeconfig.cache
 E:\STUDY\testBlazor\obj\Debug\net8.0\ref\testBlazor.dll
+E:\STUDY\testBlazor\obj\Debug\net8.0\testBlazor.sourcelink.json
