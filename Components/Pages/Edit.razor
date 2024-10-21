@@ -1,0 +1,25 @@
+@page "/editstaff/{id}"
+@inherits editEmployee
+@rendermode InteractiveServer
+<form>
+    <div class="form-group row">
+        <label for="input1" class="col-sm-2 col-form-label">FirstName</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtTitle" placeholder="@employee.FirstName"
+                @bind="@employee.FirstName">
+        </div>
+    </div>
+
+    <div class="form-group row">
+        <label for="input3" class="col-sm-2 col-form-label">LastName</label>
+        <div class="col-sm-10">
+            <input type="text" class="form-control" id="txtPrice" placeholder="@employee.LastName"
+                @bind="@employee.LastName">
+        </div>
+    </div>
+    <div class="form-group row">
+        <div class="col-sm-10">
+            <button type="button" class="btn btn-primary" @onclick="update">Update</button>
+        </div>
+    </div>
+</form>
