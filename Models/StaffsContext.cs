@@ -21,22 +21,9 @@ public partial class StaffsContext : DbContext
 
     public virtual DbSet<Gender> Genders { get; set; }
 
-    public static async Task CreateDatabase() {
-    using (var dbcontext = new StaffsContext())
-    {
-        String databasename = dbcontext.Database.GetDbConnection().Database;// mydata
-
-        Console.WriteLine("Tạo " + databasename);
-
-        bool result = await dbcontext.Database.EnsureCreatedAsync();
-        string resultstring = result ? "tạo  thành  công" : "đã có trước đó";
-        Console.WriteLine($"CSDL {databasename} : {resultstring}");
-    }
-}
-
     protected override void OnConfiguring(DbContextOptionsBuilder optionsBuilder)
+#warning To protect potentially sensitive information in your connection string, you should move it out of source code. You can avoid scaffolding the connection string by using the Name= syntax to read it from configuration - see https://go.microsoft.com/fwlink/?linkid=2131148. For more guidance on storing connection strings, see https://go.microsoft.com/fwlink/?LinkId=723263.
         => optionsBuilder.UseMySQL("server=localhost; database=staffs; uid=root; password=0834023573Dat@@");
-
 
     protected override void OnModelCreating(ModelBuilder modelBuilder)
     {
@@ -66,7 +53,7 @@ public partial class StaffsContext : DbContext
             entity.Property(e => e.FirstName).HasMaxLength(50);
             entity.Property(e => e.GenderId).HasColumnName("GenderID");
             entity.Property(e => e.LastName).HasMaxLength(50);
-            entity.Property(e => e.DateofBirth).HasColumnType("date");
+            entity.Property(e => e.StartingDate).HasColumnType("date");
 
             entity.HasOne(d => d.Department).WithMany(p => p.Employees)
                 .HasForeignKey(d => d.DepartmentId)
@@ -84,7 +71,7 @@ public partial class StaffsContext : DbContext
             entity.ToTable("gender");
 
             entity.Property(e => e.GenderId).HasColumnName("GenderID");
-            entity.Property(e => e.GenderDescription).HasMaxLength(10);
+            entity.Property(e => e.GenderName).HasMaxLength(10);
         });
 
         OnModelCreatingPartial(modelBuilder);
